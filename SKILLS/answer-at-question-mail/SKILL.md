@@ -70,9 +70,10 @@ The documentation is published at **https://activetigger.com/documentation/** �
 
 e.g. `docs/functionalities/annotate.md` → `https://activetigger.com/documentation/functionalities/annotate/`
 
+- **Every link in a reply must be an absolute URL** starting with `https://activetigger.com/documentation/`. Relative links copied from doc content — e.g. `[Explore Page](../functionalities/explore.md)` — are useless in an email: resolve them to the full URL (`https://activetigger.com/documentation/functionalities/explore/`) or leave them out. Never send a link ending in `.md` or containing `../`.
 - **Never invent a URL.** Only link to a page whose source `.md` file you actually found in `~/work/documentation/docs/` while answering. A link like `https://docs.activetigger.com/software/contributors/` is fabricated twice over — wrong domain, unverified page — and must never be sent.
 - There are no other documentation domains or subdomains: `docs.activetigger.com` does not exist.
-- If you are unsure a page exists, cite the source file path (`docs/…/….md`) or link the documentation home page instead of guessing a URL.
+- If you are unsure a page exists, link the documentation home page `https://activetigger.com/documentation/` instead of guessing a URL.
 
 ## When the documentation has no answer
 
