@@ -41,7 +41,7 @@ Run this once per session (or after any doc update) to build a plain-text search
 
 ```bash
 cd ~/work/documentation && python3 -c "
-import os, sys
+import os, re, sys
 
 docs_dir = 'docs'
 index = {}
@@ -54,10 +54,11 @@ for root, _dirs, files in os.walk(docs_dir):
         try:
             with open(fpath, 'r', encoding='utf-8') as f:
                 text = f.read()
-            # Strip markdown links but keep titles, strip image refs
+            # Strip image refs, reduce links to their text
             clean_lines = []
             for line in text.splitlines():
-                line = line.replace('![](*)', '').replace('![*](*,*)', '')
+                line = re.sub(r'!\[[^]]*\]\([^)]*\)', '', line)
+                line = re.sub(r'\[([^]]+)\]\([^)]*\)', r'\1', line)
                 clean_lines.append(line)
             text = '\n'.join(clean_lines)
             index[rel] = text
