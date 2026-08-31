@@ -58,9 +58,12 @@ The skills live in `SKILLS/`, one directory per skill (`SKILL.md`):
      cp "$d/SKILL.md" ~/.hermes/skills/"$name"/SKILL.md
    done
    ```
-6. **Create the cron job** with the setup command in [`Hermes/cron-job.md`](Hermes/cron-job.md)
-   (every 2 minutes, loads the four skills, polls the AgentMail API).
-7. **Test**: send a question from an allowlisted address, then `cronjob action=run` to trigger a
+6. **Install the check scripts**: copy [`Scripts/`](Scripts/) to `~/.hermes/scripts/`
+   (the cron job runs `active-tigger-email-check.sh` to fetch and pre-filter unread emails;
+   it installs the `agentmail` Python SDK on first run).
+7. **Create the cron job** with the setup command in [`Hermes/cron-job.md`](Hermes/cron-job.md)
+   (every 2 minutes, loads the four skills, checks mail via the script).
+8. **Test**: send a question from an allowlisted address, then `cronjob action=run` to trigger a
    run immediately; check that the reply cites doc paths, that the message lost its `unread`
    label, and that a line was appended to `~/work/question_log.tsv`.
 
