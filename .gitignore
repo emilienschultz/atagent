@@ -1,3 +1,5 @@
 CLAUDE.md
 .env
+mail-credentials.env
 .DS_Store
+__pycache__/
